@@ -3,6 +3,7 @@ package ir.pupli.jalalicalendarlib;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class JCalendar {
 
@@ -400,7 +401,9 @@ public class JCalendar {
 
     @Override
     public String toString() {
-        return String.format("%04d-%02d-%02d", getYear(), getMonth(), getDay());
+        //return String.format("%04d-%02d-%02d", getYear(), getMonth(), getDay());
+
+        return String.format(Locale.US, "%d/%d/%d", getYear(), getMonth(), getDay());
     }
 
     private class JulianCalendar {
