@@ -406,6 +406,16 @@ public class JCalendar {
         return String.format(Locale.US, "%d/%d/%d", getYear(), getMonth(), getDay());
     }
 
+    public String toString2() {
+        return String.format(Locale.US,"%04d-%02d-%02d", getYear(), getMonth(), getDay());
+    }
+    
+    public String toString3() {
+        return String.format(Locale.US,"%s %d %s %d",getDayOfWeekString() ,getDay(),
+                getMonthString(), getYear());
+    }
+
+
     private class JulianCalendar {
         int year;
         int month;
