@@ -7,7 +7,7 @@ import java.util.Locale;
 
 public class JCalendar {
 
-    private int year, month, day;
+    private int year, month, day, hour, minute, second;
 
     /**
      * Today Jalali Date
@@ -32,6 +32,21 @@ public class JCalendar {
             GregorianCalendar gregorianCalendar = new GregorianCalendar(year, month - 1, day);
             this.fromGregorian(gregorianCalendar);
         } else {
+            set(year, month, day);
+        }
+    }
+
+    public JCalendar(int year, int month, int day, int hour, int minute, int second, boolean fromGregorian) {
+        if (fromGregorian) {
+            GregorianCalendar gregorianCalendar = new GregorianCalendar(year, month - 1, day);
+            this.hour = hour;
+            this.minute = minute;
+            this.second = second;
+            this.fromGregorian(gregorianCalendar);
+        } else {
+            this.hour = hour;
+            this.minute = minute;
+            this.second = second;
             set(year, month, day);
         }
     }
@@ -401,18 +416,25 @@ public class JCalendar {
 
     @Override
     public String toString() {
-        //return String.format("%04d-%02d-%02d", getYear(), getMonth(), getDay());
-
         return String.format(Locale.US, "%d/%d/%d", getYear(), getMonth(), getDay());
     }
 
     public String toString2() {
-        return String.format(Locale.US,"%04d-%02d-%02d", getYear(), getMonth(), getDay());
+        return String.format(Locale.US, "%04d-%02d-%02d", getYear(), getMonth(), getDay());
     }
-    
+
     public String toString3() {
-        return String.format(Locale.US,"%s %d %s %d",getDayOfWeekString() ,getDay(),
+        return String.format(Locale.US, "%s %d %s %d", getDayOfWeekString(), getDay(),
                 getMonthString(), getYear());
+    }
+
+    public String toString4() {
+
+        String h = "ساعت";
+
+        // جمعه ۵ خرداد ۱۳۹۷ ساعت ۱۶:۱۷:۴۵
+        return String.format(Locale.US, "%s %d %s %04d %s %02d:%02d:%02ds", getDayOfWeekString(), getDay(),
+                getMonthString(), getYear(), h, this.hour, this.minute, this.second);
     }
 
 
