@@ -433,7 +433,7 @@ public class JCalendar {
         String h = "ساعت";
 
         // جمعه ۵ خرداد ۱۳۹۷ ساعت ۱۶:۱۷:۴۵
-        return String.format(Locale.US, "%s %d %s %04d %s %02d:%02d:%02ds", getDayOfWeekString(), getDay(),
+        return String.format(Locale.US, "%s %d %s %04d %s %02d:%02d:%02d", getDayOfWeekString(), getDay(),
                 getMonthString(), getYear(), h, this.hour, this.minute, this.second);
     }
 
