@@ -444,6 +444,12 @@ public class JCalendar {
                 this.hour, this.minute, this.second);
     }
 
+    public String toString6() {
+
+        // 1397-03-01 18:29:30
+        return String.format(Locale.US, "%04d-%02d-%02d %02d:%02d:%02d", getYear(), getMonth(), getDay(),
+                this.hour, this.minute, this.second);
+    }
 
     private class JulianCalendar {
         int year;
