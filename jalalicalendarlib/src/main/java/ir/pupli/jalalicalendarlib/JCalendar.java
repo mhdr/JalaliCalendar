@@ -288,7 +288,7 @@ public class JCalendar {
         int gregorianMonth = ((i / 153) % 12) + 1;
         int gregorianYear = j / 1461 - 100100 + (8 - gregorianMonth) / 6;
 
-        return new GregorianCalendar(gregorianYear, gregorianMonth - 1, gregorianDay);
+        return new GregorianCalendar(gregorianYear, gregorianMonth - 1, gregorianDay,this.hour,this.minute);
     }
 
     private void fromJulianDay(int JulianDayNumber) {
@@ -335,7 +335,8 @@ public class JCalendar {
         int gregorianMonth = gregorianFirstFarvardin.get(Calendar.MONTH) + 1;
         int gregorianDay = gregorianFirstFarvardin.get(Calendar.DAY_OF_MONTH);
 
-        JulianCalendar julianFirstFarvardin = new JulianCalendar(gregorianYear, gregorianMonth, gregorianDay);
+        JulianCalendar julianFirstFarvardin = new JulianCalendar(gregorianYear, gregorianMonth, gregorianDay,
+                this.hour, this.minute);
 
 
         int julianDay = julianToJulianDayNumber(julianFirstFarvardin) + (jalaliMonth - 1) * 31 - jalaliMonth / 7 * (jalaliMonth - 7)
@@ -456,10 +457,29 @@ public class JCalendar {
         int month;
         int day;
 
+        public int getHour() {
+            return hour;
+        }
+
+        public int getMinute() {
+            return minute;
+        }
+
+        int hour;
+        int minute;
+
         public JulianCalendar(int year, int month, int day) {
             this.year = year;
             this.month = month;
             this.day = day;
+        }
+
+        public JulianCalendar(int year, int month, int day, int hour, int minute) {
+            this.year = year;
+            this.month = month;
+            this.day = day;
+            this.hour = hour;
+            this.minute = minute;
         }
 
         public int getYear() {
