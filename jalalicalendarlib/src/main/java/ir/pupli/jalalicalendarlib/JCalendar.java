@@ -434,14 +434,17 @@ public class JCalendar {
 
     @Override
     public String toString() {
+		// 97/3/1
         return String.format(Locale.US, "%d/%d/%d", getYear(), getMonth(), getDay());
     }
 
     public String toString2() {
+		// 1397-03-01
         return String.format(Locale.US, "%04d-%02d-%02d", getYear(), getMonth(), getDay());
     }
 
     public String toString3() {
+		// جمعه ۵ خرداد ۱۳۹۷
         return String.format(Locale.US, "%s %d %s %d", getDayOfWeekString(), getDay(),
                 getMonthString(), getYear());
     }
