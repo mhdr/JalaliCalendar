@@ -51,6 +51,23 @@ public class JCalendar {
         }
     }
 
+    public JCalendar(Date date, boolean fromGregorian) {
+
+        if (fromGregorian) {
+            GregorianCalendar gregorianCalendar = new GregorianCalendar(date.getYear(), date.getMonth() - 1
+                    , date.getDay());
+            this.hour = date.getHours();
+            this.minute = date.getMinutes();
+            this.second = date.getSeconds();
+            this.fromGregorian(gregorianCalendar);
+        } else {
+            this.hour = date.getHours();
+            this.minute = date.getMinutes();
+            this.second = date.getSeconds();
+            set(year, month, day);
+        }
+    }
+
 
     /**
      * Create a ir.huri.jcal.JalaliCalendar object from gregorian calendar
@@ -288,7 +305,7 @@ public class JCalendar {
         int gregorianMonth = ((i / 153) % 12) + 1;
         int gregorianYear = j / 1461 - 100100 + (8 - gregorianMonth) / 6;
 
-        return new GregorianCalendar(gregorianYear, gregorianMonth - 1, gregorianDay,this.hour,this.minute);
+        return new GregorianCalendar(gregorianYear, gregorianMonth - 1, gregorianDay, this.hour, this.minute);
     }
 
     private void fromJulianDay(int JulianDayNumber) {
